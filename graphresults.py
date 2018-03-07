@@ -41,11 +41,11 @@ if __name__ == "__main__":
 	ax.scatter(keys,values, label='Accuracy', marker='o', color='b')
 	ax.plot(keys, avg, label='Average', linestyle='--', color='r')
 	ax.set_title(sys.argv[1] + " Accuracy Statistics")
-	ax.set_xlabel("Accuracies")
-	ax.set_ylabel("Models")
+	ax.set_xlabel("Models")
+	ax.set_ylabel("Accuracies")
 	
 	# Save the figure and close
-	fig.savefig(sys.argv[1] + '_accuracies.png')
+	fig.savefig(sys.argv[1] + '_results/' + sys.argv[1] + '_accuracies.png')
 	plt.close()
 
 
