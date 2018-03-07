@@ -1,0 +1,32 @@
+digraph Tree {
+node [shape=box] ;
+0 [label="OPS <= 1.5\nentropy = 0.864\nsamples = 621\nvalue = [443, 178]"] ;
+1 [label="OBP <= 0.5\nentropy = 0.8\nsamples = 527\nvalue = [399, 128]"] ;
+0 -> 1 [labeldistance=2.5, labelangle=45, headlabel="True"] ;
+2 [label="AVG <= 0.5\nentropy = 0.581\nsamples = 101\nvalue = [87, 14]"] ;
+1 -> 2 ;
+3 [label="entropy = 0.314\nsamples = 53\nvalue = [50, 3]"] ;
+2 -> 3 ;
+4 [label="entropy = 0.777\nsamples = 48\nvalue = [37, 11]"] ;
+2 -> 4 ;
+5 [label="BB% <= 1.5\nentropy = 0.838\nsamples = 426\nvalue = [312, 114]"] ;
+1 -> 5 ;
+6 [label="entropy = 0.809\nsamples = 358\nvalue = [269, 89]"] ;
+5 -> 6 ;
+7 [label="entropy = 0.949\nsamples = 68\nvalue = [43, 25]"] ;
+5 -> 7 ;
+8 [label="AVG <= 1.5\nentropy = 0.997\nsamples = 94\nvalue = [44, 50]"] ;
+0 -> 8 [labeldistance=2.5, labelangle=-45, headlabel="False"] ;
+9 [label="AVG <= 0.5\nentropy = 0.988\nsamples = 46\nvalue = [26, 20]"] ;
+8 -> 9 ;
+10 [label="entropy = 0.0\nsamples = 1\nvalue = [0, 1]"] ;
+9 -> 10 ;
+11 [label="entropy = 0.982\nsamples = 45\nvalue = [26, 19]"] ;
+9 -> 11 ;
+12 [label="K% <= 0.5\nentropy = 0.954\nsamples = 48\nvalue = [18, 30]"] ;
+8 -> 12 ;
+13 [label="entropy = 0.918\nsamples = 3\nvalue = [2, 1]"] ;
+12 -> 13 ;
+14 [label="entropy = 0.939\nsamples = 45\nvalue = [16, 29]"] ;
+12 -> 14 ;
+}
