@@ -7,8 +7,15 @@ import sys
 
 import numpy as np
 import pandas as pd
+
+import warnings
+warnings.filterwarnings("ignore")
+
 from sklearn.tree import DecisionTreeClassifier, export_graphviz
 from sklearn.metrics import accuracy_score
+from sklearn.metrics import precision_score
+from sklearn.metrics import recall_score
+from sklearn.metrics import f1_score
 from sklearn.model_selection import train_test_split
 from sklearn.naive_bayes import GaussianNB
 from sklearn.ensemble import RandomForestClassifier
@@ -45,7 +52,7 @@ if __name__ == '__main__':
 
     # test
     y_predict = dt_entropy.predict(X_test)
-    print "Entropy: {}".format(accuracy_score(y_test, y_predict))
+    print "Entropy: " + str(accuracy_score(y_test, y_predict)) + ", " + str(precision_score(y_test, y_predict)) + ", " + str(recall_score(y_test, y_predict)) + ", " + str(f1_score(y_test, y_predict))
 
     X_train, X_test, y_train, y_test = train_test_split(table_numeric[features], table_numeric[target], random_state=1)
     dt_gini = DecisionTreeClassifier(criterion='gini', max_depth=3)    
@@ -60,23 +67,23 @@ if __name__ == '__main__':
     tree.write_png(png)
 
     y_predict = dt_gini.predict(X_test)
-    print "Gini: {}".format(accuracy_score(y_test, y_predict))
+    print "Gini: " + str(accuracy_score(y_test, y_predict)) + ", " + str(precision_score(y_test, y_predict)) + ", " + str(recall_score(y_test, y_predict)) + ", " + str(f1_score(y_test, y_predict))
      
     gauss = GaussianNB()
     y_predict = gauss.fit(X_train, y_train).predict(X_test)
-    print "Bayes: {}".format(accuracy_score(y_test, y_predict))
+    print "Bayes: " + str(accuracy_score(y_test, y_predict)) + ", " + str(precision_score(y_test, y_predict)) + ", " + str(recall_score(y_test, y_predict)) + ", " + str(f1_score(y_test, y_predict))
 
     random_forest = RandomForestClassifier(criterion='entropy', max_depth=3)
     X_train, X_test, y_train, y_test = train_test_split(table_ordinal[features], table_ordinal[target], random_state=1)
     random_forest.fit(X_train, y_train)
     y_predict = random_forest.predict(X_test)
-    print "Random Forest: {}".format(accuracy_score(y_test, y_predict))   
+    print "Random Forest: " + str(accuracy_score(y_test, y_predict)) + ", " + str(precision_score(y_test, y_predict)) + ", " + str(recall_score(y_test, y_predict)) + ", " + str(f1_score(y_test, y_predict))
     
     ada = AdaBoostClassifier(random_state=1)
     X_train, X_test, y_train, y_test = train_test_split(table_ordinal[features], table_ordinal[target], random_state=1)
     ada.fit(X_train, y_train)
     y_predict = ada.predict(X_test)
-    print "AdaBoost: {}".format(accuracy_score(y_test, y_predict))   
+    print "AdaBoost: " + str(accuracy_score(y_test, y_predict)) + ", " + str(precision_score(y_test, y_predict)) + ", " + str(recall_score(y_test, y_predict)) + ", " + str(f1_score(y_test, y_predict))
     
 
 

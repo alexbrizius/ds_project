@@ -21,31 +21,72 @@ if __name__ == "__main__":
 
 	# Capture analysis script output
 	output = subprocess.check_output(["./analyze.py", sys.argv[1]])
-	output = re.split("[:\n]+", output)
+	output = re.split("[,:\n]+", output)
 
 	# Compile values into lists
 	keys = []
-	values = []
-	for i in range(0,10,2):
+	accuracies = []
+	precisions = []
+	recalls = []
+	f1 = []
+	for i in range(0,25,5):
 		keys.append(output[i])
-		values.append(float(output[i+1]))
+		accuracies.append(float(output[i+1]))
+		precisions.append(float(output[i+2]))
+		recalls.append(float(output[i+3]))
+		f1.append(float(output[i+4]))
 
-	# Calculate avg
-	mean = sum(values)/len(values)
-	avg = []
+	# Calculate averages
+	acc_mean = sum(accuracies)/len(accuracies)
+	pre_mean = sum(precisions)/len(precisions)
+	recall_mean = sum(recalls)/len(recalls)
+	f1_mean = sum(f1)/len(f1)
+	acc_avg = []
+	pre_avg = []
+	recall_avg = []
+	f1_avg = []
 	for i in range(0,5):
-		avg.append(mean)
+		acc_avg.append(acc_mean)
+		pre_avg.append(pre_mean)
+		recall_avg.append(recall_mean)
+		f1_avg.append(f1_mean)
 
-	# Plot values and average
-	fig,ax = plt.subplots()
-	ax.scatter(keys,values, label='Accuracy', marker='o', color='b')
-	ax.plot(keys, avg, label='Average', linestyle='--', color='r')
-	ax.set_title(sys.argv[1] + " Accuracy Statistics")
-	ax.set_xlabel("Models")
-	ax.set_ylabel("Accuracies")
+	# Plotting
+	fig, axs = plt.subplots(2,2)
+	fig.set_figheight(8)
+	fig.set_figwidth(10)
+
+	# Accuracies
+	axs[0,0].scatter(keys, accuracies, label='Accuracy', marker='o', color='b')
+	axs[0,0].plot(keys, acc_avg, label='Average', linestyle='--', color='r')
+	axs[0,0].set_title(sys.argv[1] + " Accuracy Statistics")
+	axs[0,0].set_xlabel("Models")
+	axs[0,0].set_ylabel("Accuracies")
+
+	# Precisions
+	axs[0,1].scatter(keys, precisions, label='Precision', marker='o', color='b')
+	axs[0,1].plot(keys, pre_avg, label='Average', linestyle='--', color='r')
+	axs[0,1].set_title(sys.argv[1] + " Precision Statistics")
+	axs[0,1].set_xlabel("Models")
+	axs[0,1].set_ylabel("Precisions")
+
+	# Recalls
+	axs[1,0].scatter(keys, recalls, label='Recall', marker='o', color='b')
+	axs[1,0].plot(keys, recall_avg, label='Average', linestyle='--', color='r')
+	axs[1,0].set_title(sys.argv[1] + " Recall Statistics")
+	axs[1,0].set_xlabel("Models")
+	axs[1,0].set_ylabel("Recalls")
 	
-	# Save the figure and close
-	fig.savefig(sys.argv[1] + '_results/' + sys.argv[1] + '_accuracies.png')
+	# F1
+	axs[1,1].scatter(keys, f1, label='F1', marker='o', color='b')
+	axs[1,1].plot(keys, f1_avg, label='Average', linestyle='--', color='r')
+	axs[1,1].set_title(sys.argv[1] + " F1 Statistics")
+	axs[1,1].set_xlabel("Models")
+	axs[1,1].set_ylabel("F1 Score")
+	
+	# Show graphs and save figure
+	plt.tight_layout(w_pad=1.5, h_pad=1.5)
+	fig.savefig(sys.argv[1] + '_results/' + sys.argv[1] + '_eval_metrics.png')
 	plt.show()
 	plt.close()
 
