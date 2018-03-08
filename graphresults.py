@@ -19,7 +19,7 @@ if __name__ == "__main__":
 		usage(sys.argv[0])
 		sys.exit(1)
 
-	# Capture script output
+	# Capture analysis script output
 	output = subprocess.check_output(["./analyze.py", sys.argv[1]])
 	output = re.split("[:\n]+", output)
 
@@ -46,6 +46,7 @@ if __name__ == "__main__":
 	
 	# Save the figure and close
 	fig.savefig(sys.argv[1] + '_results/' + sys.argv[1] + '_accuracies.png')
+	plt.show()
 	plt.close()
 
 
