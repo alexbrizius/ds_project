@@ -56,6 +56,7 @@ if __name__ == '__main__':
     
     # test
     y_predict = dt_entropy.predict(X_test)
+    
     print "Entropy " + str(accuracy_score(y_test, y_predict))[:5] + ' ' + str(precision_score(y_test, y_predict))[:5] + ' ' + str(recall_score(y_test, y_predict))[:5] + ' ' + str(f1_score(y_test, y_predict))[:5]
 
     X_train, X_test, y_train, y_test = train_test_split(table_numeric[features], table_numeric[target], random_state=1)
@@ -70,17 +71,20 @@ if __name__ == '__main__':
     (tree, ) = pydot.graph_from_dot_file(dotfile)
     tree.write_png(png)
 
+    
     y_predict = dt_gini.predict(X_test)
     print "Gini " + str(accuracy_score(y_test, y_predict))[:5] + ' ' + str(precision_score(y_test, y_predict))[:5] + ' ' + str(recall_score(y_test, y_predict))[:5] + ' ' + str(f1_score(y_test, y_predict))[:5]
      
     gauss = GaussianNB()
     y_predict = gauss.fit(X_train, y_train).predict(X_test)
+    
     print "Bayes " + str(accuracy_score(y_test, y_predict))[:5] + ' ' + str(precision_score(y_test, y_predict))[:5] + ' ' + str(recall_score(y_test, y_predict))[:5] + ' ' + str(f1_score(y_test, y_predict))[:5]
 
     random_forest = RandomForestClassifier(criterion='entropy', max_depth=3)
     X_train, X_test, y_train, y_test = train_test_split(table_ordinal[features], table_ordinal[target], random_state=1)
     random_forest.fit(X_train, y_train)
     y_predict = random_forest.predict(X_test)
+
     print "RandomForest " + str(accuracy_score(y_test, y_predict))[:5] + ' ' + str(precision_score(y_test, y_predict))[:5] + ' ' + str(recall_score(y_test, y_predict))[:5] + ' ' + str(f1_score(y_test, y_predict))[:5]
     
     ada = AdaBoostClassifier(random_state=1)
