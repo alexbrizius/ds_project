@@ -12,6 +12,10 @@ from StringIO import StringIO
 import pandas as pd
 import matplotlib.pyplot as plt
 
+
+delim = ' '
+images_path = './images/'
+
 # Prints usage for script
 def usage(program):
 	print 'Usage: {} league'.format(program)
@@ -29,13 +33,12 @@ if len(sys.argv) != 2:
 # Capture analysis script output
 outputCSV = subprocess.check_output(["./analyze.py", sys.argv[1]])
 f = StringIO(outputCSV)
-df = pd.read_csv(f, sep=' ')
+df = pd.read_csv(f, sep=delim)
 
         
-# make a bar chart for each method 
+# make a bar chart for each method
 for index, row in df.iterrows():
-    #method_name = row['Method']
-    print row
-    row.plot(kind='bar')
-    plt.savefig("hello.png")
+    row.plot(kind='bar', title=index, ylim=(0, 1.0))
+    plt.tight_layout()
+    plt.savefig(images_path + str(index) + '.png')
     mpl_reset() 
