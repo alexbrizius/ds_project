@@ -40,5 +40,5 @@ df = pd.read_csv(f, sep=delim)
 for index, row in df.iterrows():
     row.plot(kind='bar', title=index, ylim=(0, 1.0))
     plt.tight_layout()
-    plt.savefig(images_path + str(index) + '.png')
+    plt.savefig(images_path + sys.argv[1] + '_' + str(index) + '.png')
     mpl_reset() 

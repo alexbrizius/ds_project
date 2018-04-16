@@ -89,5 +89,5 @@ if __name__ == '__main__':
     y_predict = ada.predict(X_test)
     print "AdaBoost " + str(accuracy_score(y_test, y_predict))[:5] + ' ' + str(precision_score(y_test, y_predict))[:5] + ' ' + str(recall_score(y_test, y_predict))[:5] + ' ' + str(f1_score(y_test, y_predict))[:5]
     
-
+    
 

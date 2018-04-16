@@ -1,0 +1,6 @@
+Accuracy Precision Recall F1-Score
+Entropy 0.739 0.538 0.25 0.341
+Gini 0.705 0.4 0.178 0.246
+Bayes 0.676 0.4 0.392 0.396
+RandomForest 0.734 0.518 0.25 0.337
+AdaBoost 0.719 0.466 0.25 0.325
