@@ -9,9 +9,8 @@ import pandas as pd
 import scipy.stats as stats
 
 data_path = './raw_data/'
-#keep =          ['Name', 'PA', 'BB%', 'K%', 'BB/K', 'AVG', 'OBP', 'SLG', 'OPS']
-keep =          ['Name', 'PA', 'BB%', 'K%', 'AVG', 'OBP', 'SLG', 'OPS']
-higher_better = [False,  True, True, False, True, True, True, True, True] 
+keep =          ['Name', 'PA', 'BB%', 'K%', 'AVG', 'OBP', 'SLG', 'OPS', 'wRC+', 'BABIP']
+higher_better = [False,  True, True, False, True, True, True, True, True, True, True] 
 
 remove = []
 

@@ -20,6 +20,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.naive_bayes import GaussianNB
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.ensemble import AdaBoostClassifier
+from sklearn.svm import SVC 
 
 def usage(program):
     print 'Usage: {} league'.format(program)
@@ -93,5 +94,11 @@ if __name__ == '__main__':
     y_predict = ada.predict(X_test)
     print "AdaBoost " + str(accuracy_score(y_test, y_predict))[:5] + ' ' + str(precision_score(y_test, y_predict))[:5] + ' ' + str(recall_score(y_test, y_predict))[:5] + ' ' + str(f1_score(y_test, y_predict))[:5]
     
+    
+    svc = SVC(C=.5)
+    X_train, X_test, y_train, y_test = train_test_split(table_numeric[features], table_numeric[target], random_state=1)
+    svc.fit(X_train, y_train)
+    y_predict = svc.predict(X_test)
+    print "SVM " + str(accuracy_score(y_test, y_predict))[:5] + ' ' + str(precision_score(y_test, y_predict))[:5] + ' ' + str(recall_score(y_test, y_predict))[:5] + ' ' + str(f1_score(y_test, y_predict))[:5]
     
 

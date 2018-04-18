@@ -16,6 +16,14 @@ import matplotlib.pyplot as plt
 delim = ' '
 images_path = './images/'
 
+# taken from matplotlib documentation
+def autolabel(rects):
+   for rect in rects:
+        height = rect.get_height()
+        ax.text(rect.get_x() + rect.get_width()/2., 1.05*height,
+                '%.3f' % height,
+                ha='center', va='bottom')
+
 # Prints usage for script
 def usage(program):
 	print 'Usage: {} league'.format(program)
@@ -38,7 +46,9 @@ df = pd.read_csv(f, sep=delim)
         
 # make a bar chart for each method
 for index, row in df.iterrows():
-    row.plot(kind='bar', title=index, ylim=(0, 1.0))
+    ax = row.plot(kind='bar', title=index, ylim=(0, 1.0))
+    autolabel(ax.patches)
     plt.tight_layout()
     plt.savefig(images_path + sys.argv[1] + '_' + str(index) + '.png')
     mpl_reset() 
+
