@@ -16,6 +16,7 @@ from sklearn.metrics import accuracy_score
 from sklearn.metrics import precision_score
 from sklearn.metrics import recall_score
 from sklearn.metrics import f1_score
+from sklearn.neural_network import MLPClassifier
 from sklearn.model_selection import train_test_split
 from sklearn.naive_bayes import GaussianNB
 from sklearn.ensemble import RandomForestClassifier
@@ -72,7 +73,6 @@ if __name__ == '__main__':
     (tree, ) = pydot.graph_from_dot_file(dotfile)
     tree.write_png(png)
 
-    
     y_predict = dt_gini.predict(X_test)
     print "Gini " + str(accuracy_score(y_test, y_predict))[:5] + ' ' + str(precision_score(y_test, y_predict))[:5] + ' ' + str(recall_score(y_test, y_predict))[:5] + ' ' + str(f1_score(y_test, y_predict))[:5]
      
@@ -80,6 +80,11 @@ if __name__ == '__main__':
     y_predict = gauss.fit(X_train, y_train).predict(X_test)
     
     print "Bayes " + str(accuracy_score(y_test, y_predict))[:5] + ' ' + str(precision_score(y_test, y_predict))[:5] + ' ' + str(recall_score(y_test, y_predict))[:5] + ' ' + str(f1_score(y_test, y_predict))[:5]
+
+    neuralNet = MLPClassifier(hidden_layer_sizes=(30, 30, 30), learning_rate='constant', learning_rate_init=0.001, max_iter=200)
+    y_predict = neuralNet.fit(X_train, y_train).predict(X_test)
+    
+    print "NeuralNet " + str(accuracy_score(y_test, y_predict))[:5] + ' ' + str(precision_score(y_test, y_predict))[:5] + ' ' + str(recall_score(y_test, y_predict))[:5] + ' ' + str(f1_score(y_test, y_predict))[:5]
 
     random_forest = RandomForestClassifier(criterion='entropy', max_depth=3)
     X_train, X_test, y_train, y_test = train_test_split(table_ordinal[features], table_ordinal[target], random_state=1)
