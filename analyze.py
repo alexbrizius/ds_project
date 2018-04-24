@@ -1,6 +1,5 @@
 #!/usr/bin/python
 
-
 import os
 import pydot
 import sys
