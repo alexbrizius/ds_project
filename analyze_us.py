@@ -89,7 +89,7 @@ if __name__ == '__main__':
     
     print "Bayes " + str(accuracy_score(y_test, y_predict))[:5] + ' ' + str(precision_score(y_test, y_predict))[:5] + ' ' + str(recall_score(y_test, y_predict))[:5] + ' ' + str(f1_score(y_test, y_predict))[:5]
 
-    neuralNet = MLPClassifier(hidden_layer_sizes=(30, 30, 30), learning_rate='constant', learning_rate_init=0.001, max_iter=200)
+    neuralNet = MLPClassifier(hidden_layer_sizes=(30, 30, 30), learning_rate='constant', learning_rate_init=0.001, max_iter=200, random_state=2)
     y_predict = neuralNet.fit(X_train, y_train).predict(X_test)
     
     print "NeuralNet " + str(accuracy_score(y_test, y_predict))[:5] + ' ' + str(precision_score(y_test, y_predict))[:5] + ' ' + str(recall_score(y_test, y_predict))[:5] + ' ' + str(f1_score(y_test, y_predict))[:5]
