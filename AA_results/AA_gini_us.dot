@@ -1,0 +1,32 @@
+digraph Tree {
+node [shape=box] ;
+0 [label="OBP <= 0.324\ngini = 0.499\nsamples = 340\nvalue = [177, 163]"] ;
+1 [label="BB% <= 8.307\ngini = 0.33\nsamples = 96\nvalue = [76, 20]"] ;
+0 -> 1 [labeldistance=2.5, labelangle=45, headlabel="True"] ;
+2 [label="BABIP <= 0.273\ngini = 0.275\nsamples = 79\nvalue = [66, 13]"] ;
+1 -> 2 ;
+3 [label="gini = 0.432\nsamples = 19\nvalue = [13, 6]"] ;
+2 -> 3 ;
+4 [label="gini = 0.206\nsamples = 60\nvalue = [53, 7]"] ;
+2 -> 4 ;
+5 [label="wRC+ <= 80.5\ngini = 0.484\nsamples = 17\nvalue = [10, 7]"] ;
+1 -> 5 ;
+6 [label="gini = 0.0\nsamples = 4\nvalue = [0, 4]"] ;
+5 -> 6 ;
+7 [label="gini = 0.355\nsamples = 13\nvalue = [10, 3]"] ;
+5 -> 7 ;
+8 [label="OBP <= 0.377\ngini = 0.485\nsamples = 244\nvalue = [101, 143]"] ;
+0 -> 8 [labeldistance=2.5, labelangle=-45, headlabel="False"] ;
+9 [label="SLG <= 0.366\ngini = 0.499\nsamples = 193\nvalue = [92, 101]"] ;
+8 -> 9 ;
+10 [label="gini = 0.366\nsamples = 29\nvalue = [22, 7]"] ;
+9 -> 10 ;
+11 [label="gini = 0.489\nsamples = 164\nvalue = [70, 94]"] ;
+9 -> 11 ;
+12 [label="BABIP <= 0.294\ngini = 0.291\nsamples = 51\nvalue = [9, 42]"] ;
+8 -> 12 ;
+13 [label="gini = 0.0\nsamples = 2\nvalue = [2, 0]"] ;
+12 -> 13 ;
+14 [label="gini = 0.245\nsamples = 49\nvalue = [7, 42]"] ;
+12 -> 14 ;
+}

@@ -92,7 +92,7 @@ if __name__ == '__main__':
 
     X_train, X_test, y_train, y_test = train_test_split(combined[features], combined[target], random_state=1)
 
-    dt_entropy = DecisionTreeClassifier(criterion='entropy', max_depth=3)    
+    dt_entropy = DecisionTreeClassifier(criterion='entropy', max_depth=5)    
     dt_entropy = dt_entropy.fit(X_train, y_train)
 
     # output a PNG of the decision tree

@@ -1,0 +1,32 @@
+digraph Tree {
+node [shape=box] ;
+0 [label="wRC+ <= 131.536\ngini = 0.5\nsamples = 351\nvalue = [179, 172]"] ;
+1 [label="AVG <= 0.294\ngini = 0.49\nsamples = 302\nvalue = [172, 130]"] ;
+0 -> 1 [labeldistance=2.5, labelangle=45, headlabel="True"] ;
+2 [label="K% <= 10.899\ngini = 0.468\nsamples = 238\nvalue = [149, 89]"] ;
+1 -> 2 ;
+3 [label="gini = 0.245\nsamples = 7\nvalue = [1, 6]"] ;
+2 -> 3 ;
+4 [label="gini = 0.46\nsamples = 231\nvalue = [148, 83]"] ;
+2 -> 4 ;
+5 [label="SLG <= 0.428\ngini = 0.46\nsamples = 64\nvalue = [23, 41]"] ;
+1 -> 5 ;
+6 [label="gini = 0.245\nsamples = 21\nvalue = [3, 18]"] ;
+5 -> 6 ;
+7 [label="gini = 0.498\nsamples = 43\nvalue = [20, 23]"] ;
+5 -> 7 ;
+8 [label="SLG <= 0.582\ngini = 0.245\nsamples = 49\nvalue = [7, 42]"] ;
+0 -> 8 [labeldistance=2.5, labelangle=-45, headlabel="False"] ;
+9 [label="K% <= 21.25\ngini = 0.172\nsamples = 42\nvalue = [4, 38]"] ;
+8 -> 9 ;
+10 [label="gini = 0.067\nsamples = 29\nvalue = [1, 28]"] ;
+9 -> 10 ;
+11 [label="gini = 0.355\nsamples = 13\nvalue = [3, 10]"] ;
+9 -> 11 ;
+12 [label="OPS <= 1.002\ngini = 0.49\nsamples = 7\nvalue = [3, 4]"] ;
+8 -> 12 ;
+13 [label="gini = 0.375\nsamples = 4\nvalue = [3, 1]"] ;
+12 -> 13 ;
+14 [label="gini = 0.0\nsamples = 3\nvalue = [0, 3]"] ;
+12 -> 14 ;
+}
